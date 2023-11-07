@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "bellman's corner"
+  navbar:
+    left:
+      - text: "About Me"
+        file: about.qmd
+      - text: "CV"
+        file: bellman-cv-2023.pdf
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/benjamin-bellman-996936bb
+      - icon: github
+        href: https://github.com/benbellman
+      - icon: mastodon
+        href: https://mastodon.skrimmage.com/@BenInquiring
+format:
+  html:
+    theme: lumen
+    css: styles.css
+
+editor: visual
+
