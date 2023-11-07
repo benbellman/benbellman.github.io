@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-11-04">
+
+<title>bellman’s corner - Mapping The Shire With ggplot2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">bellman’s corner</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bellman-cv-2023.pdf" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/benjamin-bellman-996936bb" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/benbellman" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://mastodon.skrimmage.com/@BenInquiring" rel="" target=""><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Mapping The Shire With <code>ggplot2</code></h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">ggplot2</div>
+                <div class="quarto-category">gis</div>
+                <div class="quarto-category">data viz</div>
+                <div class="quarto-category">terra</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 4, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>My dad is a massive Tolkien fan, and when I stumbled upon <a href="https://www.andrewheiss.com/blog/2023/04/26/middle-earth-mapping-sf-r-gis/">this incredible R blog</a> by Andrew Heiss showcasing GIS with the <code>sf</code> package and Middle Earth data, I knew I needed to make him a custom map for his birthday. I’m not as big a fan as him, but I love the LOTR books and movies, and we share a particular fondness for the Shire: him because of Anglophile agrarian idealism, and me for the rich bounty of geographic world-building that Tolkien shoveled into it.</p>
+<p>I know a lot of geographers swear by <code>tmap</code>, but my favorite viz tool will always be <code>ggplot2</code>, even for mapping. The wealth of companion packages that have been built for it is just so powerful. I also love the ability to hard-code label placements within the coordinate space of the data/chart, something I leaned on heavily for this project.</p>
+<p>My objective was to create a classic Tolkien-style map as a standard 2560-by-1440 pixel desktop background. I wanted it to have that iconic Peter Jackson film style and leverage some 3D effects to highlight topography. I also wanted it to have enough detail to take you on a journey in your imagination but still be a usable background, letting your icons appear effortlessly and feel natural. Skip to the end if you want to see the final product and download to use yourself!</p>
+<section id="setting-up" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up">Setting up</h2>
+<p>First things first, I needed the right font for this map to really work. I found <a href="https://fontzone.net/font-details/tolkien">this lovely design for free download</a> and never looked back. It doesn’t support accents, which is just fine by me because text encoding is a private hell, and ASCII helps avoid pain and suffering where possible. Handling custom fonts in R varies by platforms and preferences, but as a current Windows user, I love <code>extrafont</code> for importing <code>.ttf</code> files. This should work regardless of platform:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) <span class="co">#consistent local paths, check it out</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># register downloaded Tolkien.tff with extrafont package</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># use your own folder path</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">font_import</span>(<span class="at">paths =</span> <span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># import font data into extrafont library within R</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">loadfonts</span>()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fonts loaded this way are availble for future sessions </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># just load extrafont with this verison of R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now that the font is installed, start a fresh R session to use it. Let’s load all the necessary packages and set up a couple handy functions for later:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringi)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpattern)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># keep colors consistent</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>clr_green <span class="ot">&lt;-</span> <span class="st">"#035711"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>clr_blue <span class="ot">&lt;-</span> <span class="st">"#9CC2EA"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>clr_yellow <span class="ot">&lt;-</span> <span class="st">"#fffce3"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># quick conversion</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>miles_to_meters <span class="ot">&lt;-</span> <span class="cf">function</span>(x)  x <span class="sc">*</span> <span class="fl">1609.344</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure consistent spatial data import</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>load_me_data <span class="ot">&lt;-</span> <span class="cf">function</span>(path) { </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># load shapefile</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(path, <span class="at">as_tibble =</span> T, <span class="at">options =</span> <span class="st">"ENCODING=ISO-8859-1"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop accents in placenames (font doesn't have them)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename_with</span>(<span class="at">.fn =</span> str_to_lower) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">stri_trans_general</span>(name, <span class="st">"Latin-ASCII"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># re-project to consistent coordinate system</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="dv">32631</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vector-data" class="level2">
+<h2 class="anchored" data-anchor-id="vector-data">Vector data</h2>
+<p>Now we can load the actual data, created by the Middle Earth Digital Elevation Model team (download the vector data <a href="https://github.com/jvangeld/ME-GIS">here</a> and the elevation model <a href="https://github.com/simonbrewer/MiddleEarthR/tree/master/data/raster">here</a>. Their original goal was to create detailed maps of all of Middle Earth for table top gaming, which posed some intereting challenges for my smaller scale vision. These are the files I ended up using in the final draft:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load middle earth vector files</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>me_forests <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Forests.shp"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>me_rivers <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Rivers.shp"</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>me_towns <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Towns.shp"</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>me_lakes <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Lakes.shp"</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>me_wetlands <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Wetlands02.shp"</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>me_roads <span class="ot">&lt;-</span> <span class="fu">load_me_data</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"ME-GIS-master"</span>, <span class="st">"Roads.shp"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="raster-data" class="level2">
+<h2 class="anchored" data-anchor-id="raster-data">Raster data</h2>
+<p>Now we load and process the elevation raster data. This next part uses the <code>terra</code> package, which I finally started using for this project! After loading, I make sure it has the same coordinate system as the vector files.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load digital elevation model</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>me_dem <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"data"</span>, <span class="st">"DEM"</span>, <span class="st">"10K.jpg"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># match coordinate system to rest of data</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(me_dem) <span class="ot">&lt;-</span> <span class="st">"epsg:32631"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I found it easier to work with a small subset of elevation data, since I was only interested in mapping the Shire.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab hobbiton to anchor map extent</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>hobbiton <span class="ot">&lt;-</span> me_towns <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Hobbiton"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">geometry_x =</span> <span class="fu">map_dbl</span>(geometry, <span class="sc">~</span><span class="fu">as.numeric</span>(.)[<span class="dv">1</span>]),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">geometry_y =</span> <span class="fu">map_dbl</span>(geometry, <span class="sc">~</span><span class="fu">as.numeric</span>(.)[<span class="dv">2</span>]))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create bounding box to select elevation data</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>shire_bb <span class="ot">&lt;-</span> <span class="fu">st_bbox</span>(<span class="fu">c</span>(<span class="at">xmin =</span> hobbiton<span class="sc">$</span>geometry_x <span class="sc">-</span> <span class="fu">miles_to_meters</span>(<span class="dv">50</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">xmax =</span> hobbiton<span class="sc">$</span>geometry_x <span class="sc">+</span> <span class="fu">miles_to_meters</span>(<span class="dv">70</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> hobbiton<span class="sc">$</span>geometry_y <span class="sc">+</span> <span class="fu">miles_to_meters</span>(<span class="dv">50</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymin =</span> hobbiton<span class="sc">$</span>geometry_y <span class="sc">-</span> <span class="fu">miles_to_meters</span>(<span class="dv">50</span>)),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="dv">32631</span>))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># limit DEM to shire extent</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>shire_dem <span class="ot">&lt;-</span> <span class="fu">crop</span>(me_dem, <span class="fu">ext</span>(shire_bb))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After some experiments, I realized that the original DEM didn’t have a realistic feel when zoomed to the Shire’s extent. When translated to three dimensions, the knotted hill country where the Four Farthings meet morphed into towering spires and sheer cliffs, and the flat plains were lumpy and grid-like. To help the landscape resemble natural hill slopes, I applied a kernel density function to calculate weighted averages of elevation, created a smoothed elevation layer.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># local weighted mean, Gaussian kernel with 200m radius</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>smooth <span class="ot">&lt;-</span> <span class="fu">focal</span>(shire_dem, <span class="at">w =</span> <span class="fu">focalMat</span>(shire_dem, <span class="at">d =</span> <span class="dv">200</span>, <span class="at">type =</span> <span class="st">"Gauss"</span>), <span class="at">fun =</span> <span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="shading-the-hill-slopes" class="level2">
+<h2 class="anchored" data-anchor-id="shading-the-hill-slopes">Shading the hill slopes</h2>
+<p>I used this data to wrap my head around the <code>rayshader</code> page for the first time, but ultimately decided that I could get a nice 3D effect with <code>ggplot2</code> and also leverage its sharp text and polygon displays. The <code>terra</code> package has built-in tools for computing basic topographic variables for elevation surfaces, and a function to compute shade for a given cell in a DEM. In order to simulate shade values from light sources, we need to compute slope and aspect at each cell with the smoothed elevation.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate terrain surface for rayshading the map shadow effect</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sl <span class="ot">&lt;-</span> <span class="fu">terrain</span>(smooth, <span class="st">"slope"</span>, <span class="at">unit =</span> <span class="st">"radians"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>asp <span class="ot">&lt;-</span> <span class="fu">terrain</span>(smooth, <span class="st">"aspect"</span>, <span class="at">unit =</span> <span class="st">"radians"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># shade from different sun angles and create composite shade values</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>hillmulti <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># angles of light source</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">270</span>, <span class="dv">15</span>, <span class="dv">60</span>, <span class="dv">330</span>), </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda function to get shade generated at each cell</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  \(dir) <span class="fu">shade</span>(sl, asp, <span class="at">angle =</span> <span class="dv">45</span>, <span class="at">direction =</span> dir, <span class="at">normalize=</span><span class="cn">TRUE</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rast</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>()</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># convert raster to df for ggplot</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>hillmultidf <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(hillmulti, <span class="at">xy =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="map-annotations" class="level2">
+<h2 class="anchored" data-anchor-id="map-annotations">Map annotations</h2>
+<p>Finally, I hard-coded the map annotations as data frames with annotations built in, and I was meticulous when manually entering and choosing these values. I don’t think it’s wise to ever trust automatic label placement when mapping or adding text to charts. Remember your audience, medium (physical document, size, colors, etc.), and make purposeful choices on how/where to label your visuals based on those parameters.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># settlements</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>towns_anno <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Hobbiton"</span>, <span class="st">"Bywater"</span>, <span class="st">"Bree"</span>, <span class="st">"Stock"</span>, <span class="st">"Michel</span><span class="sc">\n</span><span class="st">Delving"</span>, <span class="st">"Scary"</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Sackville"</span>, <span class="st">"Longbottom"</span>, <span class="st">"Waymeet"</span>, <span class="st">"Needlehole"</span>, <span class="st">"Nobottle"</span>, <span class="st">"Overhill"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Frogmorton"</span>, <span class="st">"Bucklebury"</span>, <span class="st">"Newbury"</span>, <span class="st">"Tuckburrow"</span>, <span class="st">"Tookbank"</span>, <span class="st">"Greenholm"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Oatbarton"</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">512700</span>, <span class="dv">526000</span>, <span class="dv">596000</span>, <span class="dv">550500</span>, <span class="fl">479517.2</span>, <span class="dv">545000</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="dv">513500</span>, <span class="dv">522000</span>, <span class="dv">505000</span>, <span class="dv">495000</span>, <span class="dv">486000</span>, <span class="dv">520000</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="dv">537000</span>, <span class="dv">561000</span>, <span class="dv">568000</span>, <span class="dv">517000</span>, <span class="dv">513000</span>, <span class="dv">456000</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="dv">529000</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1047200</span>, <span class="dv">1045500</span>, <span class="dv">1043500</span>, <span class="dv">1039200</span>, <span class="dv">1029736</span>, <span class="dv">1054000</span>, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="dv">997500</span>, <span class="dv">1001500</span>, <span class="dv">1039000</span>, <span class="dv">1056000</span>, <span class="dv">1047500</span>, <span class="dv">1052300</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1041000</span>, <span class="dv">1030500</span>, <span class="dv">1037500</span>, <span class="dv">1030000</span>, <span class="dv">1036000</span>, <span class="dv">1026000</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1065068</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="sc">-</span><span class="dv">7</span>, <span class="sc">-</span><span class="dv">16</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">25</span>, <span class="dv">0</span>, </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="sc">-</span><span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">30</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">45</span>, <span class="dv">0</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># rivers</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>rivers_anno <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"The Water"</span>, <span class="st">"River Brandywine</span><span class="sc">\n</span><span class="st">(Baranduin)"</span>, <span class="st">"River Withywindle"</span>, <span class="st">"River Shirebourn"</span>),</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">539000</span>, <span class="dv">542500</span>, <span class="dv">563000</span>, <span class="dv">531000</span>),</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1047000</span>, <span class="dv">998000</span>, <span class="dv">1024000</span>, <span class="dv">1011700</span>),</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">52</span>, <span class="dv">22</span>, <span class="sc">-</span><span class="dv">20</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># woods and marshes</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>woods_anno <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Woody</span><span class="sc">\n</span><span class="st">End"</span>, <span class="st">"The Marish"</span>, <span class="st">"Overbourn</span><span class="sc">\n</span><span class="st">Marshes"</span>, <span class="st">"Chetwood"</span>, </span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Bindbode</span><span class="sc">\n</span><span class="st">Wood"</span>, <span class="st">"The Old</span><span class="sc">\n</span><span class="st">Forest"</span>, <span class="st">"Green Hills</span><span class="sc">\n</span><span class="st">Country"</span>),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">536000</span>, <span class="dv">546000</span>, <span class="dv">547000</span>, <span class="dv">604000</span>,</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="dv">513000</span>, <span class="dv">567000</span>, <span class="dv">524000</span>),</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1028000</span>, <span class="dv">1027000</span>, <span class="dv">1012000</span>, <span class="dv">1052000</span>,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1056000</span>, <span class="dv">1015000</span>, <span class="dv">1025500</span>),</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">65</span>, <span class="dv">0</span>, <span class="dv">25</span>,</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co"># roads</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>roads_anno <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Great East Road"</span>, <span class="st">"North-South Road</span><span class="sc">\n</span><span class="st">(Greenway)"</span>),</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">575000</span>, <span class="dv">599500</span>),</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1050000</span>, <span class="dv">1062000</span>),</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">79</span>)</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co"># hills</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>hills_anno <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"The</span><span class="sc">\n</span><span class="st">Barrow-downs"</span>, <span class="st">"The</span><span class="sc">\n</span><span class="st">Far</span><span class="sc">\n</span><span class="st">Downs"</span>),</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">590000</span>, <span class="dv">460000</span>),</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1037000</span>, <span class="dv">1036000</span>),</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co"># combine map features</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>anno_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">list</span>(towns_anno, rivers_anno,woods_anno, roads_anno, hills_anno))</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="co"># title</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">txt =</span> <span class="fu">c</span>(<span class="st">"The Shire"</span>),</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">477000</span>),</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1000500</span>)</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co"># cartographer and date</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>captions <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">txt =</span> <span class="fu">c</span>(<span class="st">"Ben Bellman    August 15, 2023"</span>),</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">477000</span>),</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">993000</span>)</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="final-map-code" class="level2">
+<h2 class="anchored" data-anchor-id="final-map-code">Final map code</h2>
+<p>Finally, here’s the code that generated the final product. I’m thrilled with how it looks, and think I did a better job than I ever would with any of the point-and-click GIS software products out there. Preserving workflows with code is always worth the effort!</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># start with elevation rayshade</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> hillmultidf,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(x, y, <span class="at">fill =</span> sum),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># physical geography</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> me_forests, <span class="at">linewidth =</span> <span class="dv">0</span>, <span class="at">fill =</span> clr_green, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> me_rivers, <span class="at">linewidth =</span> <span class="fl">0.75</span>, <span class="at">color =</span> clr_blue) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> me_lakes, <span class="at">color =</span> clr_blue, <span class="at">fill =</span> clr_blue) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_pattern</span>(<span class="at">data =</span> me_wetlands, <span class="at">pattern =</span> <span class="st">"stripe"</span>, <span class="at">pattern_density =</span> <span class="fl">0.95</span>, <span class="at">pattern_spacing =</span> <span class="fl">0.02</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">pattern_color =</span> clr_blue, <span class="at">pattern_fill =</span> clr_green, <span class="at">fill =</span> clr_blue, <span class="at">color =</span> clr_blue, <span class="at">pattern_alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># roads</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(me_roads, type <span class="sc">==</span> <span class="st">"PRIMARY"</span>), <span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"#483C32"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(me_roads, type <span class="sc">==</span> <span class="st">"SECONDARY"</span>), <span class="at">linewidth =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"#483C32"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(me_roads, type <span class="sc">==</span> <span class="st">"TERTIARY"</span>), <span class="at">linewidth =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"#483C32"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># settlements</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(me_towns, type <span class="sc">==</span> <span class="st">"Town"</span>), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">pch =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"#483C32"</span>) <span class="sc">+</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(me_towns, type <span class="sc">==</span> <span class="st">"Village"</span>), <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"#483C32"</span>) <span class="sc">+</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># map annotations</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> anno_df,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> name, <span class="at">angle =</span> angle), </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Tolkien"</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># title</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> title,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> txt), </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Tolkien"</span>, <span class="at">size =</span> <span class="dv">15</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># captions</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> captions,</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> txt), </span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Tolkien"</span>, <span class="at">size =</span> <span class="fl">4.5</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale bar</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"br"</span>, <span class="at">bar_cols =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>),</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                   <span class="at">text_family =</span> <span class="st">"Tolkien"</span>,</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                   <span class="at">unit_category =</span> <span class="st">"imperial"</span>) <span class="sc">+</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base map extent on hobbiton</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>( <span class="co"># figuring out this extent was trial and error</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(hobbiton<span class="sc">$</span>geometry_x <span class="sc">-</span> <span class="fu">miles_to_meters</span>(<span class="dv">38</span>),</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>             hobbiton<span class="sc">$</span>geometry_x <span class="sc">+</span> <span class="fu">miles_to_meters</span>(<span class="dv">53</span>)),</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(hobbiton<span class="sc">$</span>geometry_y <span class="sc">-</span> <span class="fu">miles_to_meters</span>(<span class="dv">32</span>),</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>             hobbiton<span class="sc">$</span>geometry_y <span class="sc">+</span> <span class="fu">miles_to_meters</span>(<span class="fl">18.625</span>)),</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">crs =</span> <span class="dv">32631</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># map vibes</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> clr_yellow, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="ot">-&gt;</span> shire_map</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co"># save the map, specify size by pixels</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> shire_map, <span class="at">filename =</span> <span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"shire-map"</span>, <span class="st">"shire_map_desktop.png"</span>), <span class="at">width =</span> <span class="dv">2560</span>, <span class="at">height =</span> <span class="dv">1440</span>, <span class="at">units =</span> <span class="st">"px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="shire_map_desktop.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">My final map of the Shire, sized as a desktop background. Enjoy!</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
