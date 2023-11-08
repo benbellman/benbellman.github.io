@@ -149,43 +149,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Mapping The Shire With <code>ggplot2</code></h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">ggplot2</div>
-                <div class="quarto-category">gis</div>
-                <div class="quarto-category">data viz</div>
-                <div class="quarto-category">terra</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 4, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mapping The Shire With <code>ggplot2</code></h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">gis</div>
+    <div class="quarto-category">data viz</div>
+    <div class="quarto-category">terra</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 4, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <p>My dad is a massive Tolkien fan, and when I stumbled upon <a href="https://www.andrewheiss.com/blog/2023/04/26/middle-earth-mapping-sf-r-gis/">this incredible R blog</a> by Andrew Heiss showcasing GIS with the <code>sf</code> package and Middle Earth data, I knew I needed to make him a custom map for his birthday. I’m not as big a fan as him, but I love the LOTR books and movies, and we share a particular fondness for the Shire: him because of Anglophile agrarian idealism, and me for the rich bounty of geographic world-building that Tolkien shoveled into it.</p>
 <p>I know a lot of geographers swear by <code>tmap</code>, but my favorite viz tool will always be <code>ggplot2</code>, even for mapping. The wealth of companion packages that have been built for it is just so powerful. I also love the ability to hard-code label placements within the coordinate space of the data/chart, something I leaned on heavily for this project.</p>
