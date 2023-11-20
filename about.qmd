@@ -1,7 +1,7 @@
 ---
 title: "Ben Bellman"
 about:
-  template: trestles
+  template: solana
   image: profile.png
 ---
 
@@ -24,11 +24,11 @@ Advisor: John R. Logan
 
 ::: text-end
 Providence, RI\
-2020
+Granted 2020
 :::
 :::
 
--   Dissertation: [*Tracking White Flight in Philadelphia Before World War II*](https://repository.library.brown.edu/studio/item/bdr:1129230/)
+Dissertation: [*Tracking White Flight in Philadelphia Before World War II*](https://repository.library.brown.edu/studio/item/bdr:1129230/)
 
 ::: {.d-flex .justify-content-between}
 <div>
@@ -40,7 +40,7 @@ M.A. in Sociology\
 
 ::: text-end
 Providence, RI\
-2016
+Granted 2016
 :::
 :::
 
@@ -54,6 +54,6 @@ B.A. in Geography and English
 
 ::: text-end
 Boulder, CO\
-2014
+Granted 2014
 :::
 :::
