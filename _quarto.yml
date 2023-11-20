@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "the bell desk"
+  title: "bellman's desk"
   navbar:
     left:
       - text: "About Me"
