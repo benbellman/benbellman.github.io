@@ -5,11 +5,55 @@ about:
   image: profile.png
 ---
 
+I'm a data scientist and writer, and I currently work as a Senior Data Analyst in the Boulder County justice system. I have experience as a consultant for Ivy League researchers and in professional soccer. Outside of data, I love poetry, music, maps, games, and laughing.
 
-I'm a data scientist and writer that wants to make life better for both people and the planet. I like soccer, trivia, poetry, music, maps, and a bunch of other random stuff.
-
-This blog is a space to hack code, share ideas, and have fun. I've found so many useful things on blogs just like this, so I hope you find something useful here.
+This blog is a space to hack code, share ideas, and have fun. Maybe a poem or two will appear! I've found so many useful things on blogs just like this, so I hope you find something useful here.
 
 Data for good, never evil!
 
+### Education
 
+::: {.d-flex .justify-content-between}
+<div>
+
+**Brown University**\
+Ph.D. in Sociology\
+Advisor: John R. Logan
+
+</div>
+
+::: text-end
+Providence, RI\
+2020
+:::
+:::
+
+-   Dissertation: [*Tracking White Flight in Philadelphia Before World War II*](https://repository.library.brown.edu/studio/item/bdr:1129230/)
+
+::: {.d-flex .justify-content-between}
+<div>
+
+**Brown University**\
+M.A. in Sociology\
+
+</div>
+
+::: text-end
+Providence, RI\
+2016
+:::
+:::
+
+::: {.d-flex .justify-content-between}
+<div>
+
+**University of Colorado**\
+B.A. in Geography and English
+
+</div>
+
+::: text-end
+Boulder, CO\
+2014
+:::
+:::

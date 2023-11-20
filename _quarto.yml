@@ -3,13 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "bellman's corner"
+  title: "the bell desk"
   navbar:
     left:
       - text: "About Me"
         file: about.qmd
       - text: "CV"
         file: bellman-cv-2023.pdf
+      - text: "Publications"
+        file: research.qmd
     right:
       - icon: linkedin
         href: https://www.linkedin.com/in/benjamin-bellman-996936bb
