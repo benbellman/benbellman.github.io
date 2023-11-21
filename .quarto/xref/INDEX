@@ -19,5 +19,8 @@
   },
   "research.qmd": {
     "research.html": "ab789034"
+  },
+  "posts/front-garden/index.qmd": {
+    "index.html": "6ff30798"
   }
 }
