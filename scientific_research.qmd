@@ -1,0 +1,78 @@
+---
+title: "Scientific Research"
+echo: false
+jupyter: python3
+section-divs: false
+keep-md: true
+---
+
+```{python}
+import yaml
+from IPython.display import display, Markdown, HTML
+def readable_list(_s):
+  if len(_s) < 3:
+    return ' and '.join(map(str, _s))
+  *a, b = _s
+  return f"{', '.join(map(str, a))}, and {b}"
+def button(url, str, icon):
+    icon_base = icon[:2]
+    return f"""<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <a class="btn btn-outline-dark btn-sm", href="{url}" target="_blank" rel="noopener noreferrer">
+        <i class="{icon_base} {icon}" role='img' aria-label='{str}'></i>
+        {str}
+    </a>"""
+yaml_data = yaml.safe_load(open("scientific_articles.yml", encoding="utf8"))
+pub_strs = {"pubs": {}, "wps": {}}
+for _, data in yaml_data.items():
+    title_str = data["title"]
+    authors = data.get("authors", ["me"])
+    authors = [aut if aut != "me" else "<strong>Benjamin Bellman</strong>" for aut in authors]
+    author_str = readable_list(authors)
+    year_str = data["year"]
+    abstract = data.get("abstract")
+    if abstract is None:
+        abstract = " "
+    buttons = []
+    preprint = data.get("preprint")
+    if preprint is not None:
+        buttons.append(button(preprint, "Preprint", "ai-biorxiv"))
+    github = data.get("github")
+    if github is not None:
+        buttons.append(button(github, "Github", "bi-github"))
+    pubmed=data.get("pubmed")
+    if pubmed is not None:
+        buttons.append(button(pubmed, "PubMed", "ai-pubmed"))
+    pub_url = data.get("published_url")
+    journal = data.get("journal")
+    working_paper = pub_url is None
+    
+    pub_str = f'{author_str}. {year_str}. "{title_str}."'
+    if journal is not None:
+        pub_str += f" <em>{journal}.</em><br>"
+    if working_paper:
+        if year_str not in pub_strs["wps"]:
+            pub_strs["wps"][year_str] = []
+        pub_strs["wps"][year_str].append(
+            "<li class='list-group-item'>" + pub_str + "<br>" + " ".join(buttons) + "</li>"
+        )
+    else:
+        if year_str not in pub_strs["pubs"]:
+            pub_strs["pubs"][year_str] = []
+        buttons.append(button(pub_url, "Published", "bi-journal-check"))
+        pub_strs["pubs"][year_str].append(
+            "<li class='list-group-item'>" + pub_str + "<br>" + "<details><summary>Abstract</summary><ul>" + abstract + "</ul></details>" + "".join(buttons) + "</li>"
+        )
+```
+
+## Published Articles
+
+```{python}
+#| label: "published-year"
+#| id: "published-year"
+#| output: asis
+for year in sorted(pub_strs["pubs"].keys(), reverse=True):
+    display(Markdown(f"### {year}" + "{#" + f"published-{year}" + "}"))
+    display(HTML(
+        "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["pubs"][year]) + "</ul>"
+    ))
+```

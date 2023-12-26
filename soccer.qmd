@@ -1,37 +1,40 @@
 ---
-title: "Publications"
+title: "Soccer"
 echo: false
 jupyter: python3
 section-divs: false
 keep-md: true
 ---
 
+I've loved soccer my whole life, and once I found data as my professional focus, that quickly became a fundamental way I think about the game. I have worked with everything from simple box scores to space-in-time player tracking data, and I hope to keep pushing the envelope in this space. I'm a contributor with [American Soccer Analysis](https://www.americansocceranalysis.com/) (my bylines are below), and if you work in the game I'd love to connect over social media or [email](mailto:bhbellman@yahoo.com)!
+
 ```{python}
 import yaml
 from IPython.display import display, Markdown, HTML
 def readable_list(_s):
+  if len(_s) ==1:
+    return "<strong>Benjamin Bellman</strong>"
   if len(_s) < 3:
     return ' and '.join(map(str, _s))
   *a, b = _s
   return f"{', '.join(map(str, a))}, and {b}"
 def button(url, str, icon):
     icon_base = icon[:2]
-    return f"""<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    return f"""<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <a class="btn btn-outline-dark btn-sm", href="{url}" target="_blank" rel="noopener noreferrer">
         <i class="{icon_base} {icon}" role='img' aria-label='{str}'></i>
         {str}
     </a>"""
-yaml_data = yaml.safe_load(open("scientific_papers.yml", encoding="utf8"))
+yaml_data = yaml.safe_load(open("soccer_articles.yml"))
 pub_strs = {"pubs": {}, "wps": {}}
 for _, data in yaml_data.items():
     title_str = data["title"]
+    date=data["longdate"]
+    description_str = data["description"]
     authors = data.get("authors", ["me"])
     authors = [aut if aut != "me" else "<strong>Benjamin Bellman</strong>" for aut in authors]
     author_str = readable_list(authors)
     year_str = data["year"]
-    abstract = data.get("abstract")
-    if abstract is None:
-        abstract = " "
     buttons = []
     preprint = data.get("preprint")
     if preprint is not None:
@@ -39,32 +42,29 @@ for _, data in yaml_data.items():
     github = data.get("github")
     if github is not None:
         buttons.append(button(github, "Github", "bi-github"))
-    pubmed=data.get("pubmed")
-    if pubmed is not None:
-        buttons.append(button(pubmed, "PubMed", "ai-pubmed"))
     pub_url = data.get("published_url")
-    journal = data.get("journal")
+    publisher = data.get("publisher")
     working_paper = pub_url is None
-    
-    pub_str = f'{author_str}. ({year_str}) "{title_str}."'
-    if journal is not None:
-        pub_str += f" <em>{journal}</em><br>"
+    pub_str = f'"{title_str}"<br>{date}<br>{author_str} '
+    desc_str = f'<em>{description_str}<br></em>'
+    #if publisher is not None:
+    #    pub_str += f" <em>{publisher}</em>"
     if working_paper:
         if year_str not in pub_strs["wps"]:
             pub_strs["wps"][year_str] = []
         pub_strs["wps"][year_str].append(
-            "<li class='list-group-item'>" + pub_str + "<br>" + " ".join(buttons) + "</li>"
+            "<li class='list-group-item'>" + pub_str + "<br><br>" + "<br> " .join(buttons) + "</li>"
         )
     else:
         if year_str not in pub_strs["pubs"]:
             pub_strs["pubs"][year_str] = []
-        buttons.append(button(pub_url, "Published", "bi-journal-check"))
+        buttons.append(button(pub_url, f" <strong>{publisher}</strong>", "fa fa-soccer-ball-o"))
         pub_strs["pubs"][year_str].append(
-            "<li class='list-group-item'>" + pub_str + "<br>" + "<details><summary>Abstract</summary><ul>" + abstract + "</ul></details>" + "".join(buttons) + "</li>"
+            "<li class='list-group-item'>" + pub_str + "<br><br>" + "<br> " .join(buttons) + "</li>"
         )
 ```
 
-## Scientific Papers
+## Public Articles
 
 ```{python}
 #| label: "published-year"

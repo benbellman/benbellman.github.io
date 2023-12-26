@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog - bellman’s desk 🛎️</title>
+<title>Blog - Soccer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -61,43 +59,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -127,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Scientific Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./soccer.html" rel="" target="">
+    <a class="nav-link active" href="./soccer.html" rel="" target="" aria-current="page">
  <span class="menu-text">Soccer</span></a>
   </li>  
 </ul>
@@ -155,119 +125,76 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">bellman’s desk 🛎️</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data viz">data viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="gis">gis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="poetry">poetry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="terra">terra <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soccer</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>I’ve loved soccer my whole life, and once I found data as my professional focus, that quickly became a fundamental way I think about the game. I have worked with everything from simple box scores to space-in-time player tracking data, and I hope to keep pushing the envelope in this space. I’m a contributor with <a href="https://www.americansocceranalysis.com/">American Soccer Analysis</a> (my bylines are below), and if you work in the game I’d love to connect over social media or <a href="mailto:bhbellman@yahoo.com">email</a>!</p>
+<h2 id="public-articles" class="anchored">Public Articles</h2>
+<h3 id="published-2023" class="anchored">2023</h3>
+<ul class="list-group list-group-flush"><li class="list-group-item">"2023 Season Previews: New York Red Bulls, Columbus Crew, Colorado Rapids"<br>February 23, 2023<br>Alex Xenopoulos, Eliot McKinley, and <strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2023/2/23/2023-season-previews-new-york-red-bulls-columbus-crew-colorado-rapids" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li></ul>
+<h3 id="published-2019" class="anchored">2019</h3>
+<ul class="list-group list-group-flush"><li class="list-group-item">"Colorado Rapids 2019 Season Preview"<br>February 12, 2019<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2019/2/12/colorado-rapids-2019-season-preview" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li>
+<li class="list-group-item">"How to Find Transfer Market Success in MLS"<br>January 25, 2019<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2019/1/24/uncovering-the-best-foreign-transfers-to-mls" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li></ul>
+<h3 id="published-2018" class="anchored">2018</h3>
+<ul class="list-group list-group-flush"><li class="list-group-item">"New York Red Bulls 2018 Season Preview"<br>February 21, 2018<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2018/2/21/new-york-red-bulls-2018-season-preview" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li>
+<li class="list-group-item">"Colorado Rapids 2018 Season Preview"<br>February 15, 2018<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2018/2/15/colorado-rapids-2018-season-preview" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li></ul>
+<h3 id="published-2017" class="anchored">2017</h3>
+<ul class="list-group list-group-flush"><li class="list-group-item">"Colorado Rapids 2017 Season Preview"<br>February 28, 2017<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2017/2/28/colorado-rapids-2017-season-preview" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li></ul>
+<h3 id="published-2016" class="anchored">2016</h3>
+<ul class="list-group list-group-flush"><li class="list-group-item">"Tactics, Talent, and Success: Diversity in Scoring and Chance Creation"<br>February 28, 2016<br><strong>Benjamin Bellman</strong> <br><br><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a class="btn btn-outline-dark btn-sm" ,="" href="https://www.americansocceranalysis.com/home/2016/8/24/tactics-talent-and-success-diversity-in-scoring-and-chance-creation" target="_blank" rel="noopener noreferrer">
+        <i class="fa fa fa-soccer-ball-o" role="img" aria-label=" <strong>American Soccer Analysis</strong>"></i>
+         <strong>American Soccer Analysis</strong>
+    </a></li></ul>
 
 
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="poetry" data-listing-date-sort="1700463600000" data-listing-file-modified-sort="1700544420495" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/front-garden/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/front-garden/index.html">
-<h3 class="no-anchor listing-title">
-Front Garden
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('poetry'); return false;">
-poetry
-</div>
-</div>
-<a href="./posts/front-garden/index.html">
-<div class="listing-description">
-a stillness encased<br>
-by leaves and bark
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/front-garden/index.html">
-<div class="listing-date">
-Nov 20, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="ggplot2,gis,data viz,terra" data-listing-date-sort="1699077600000" data-listing-file-modified-sort="1699376988896" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11">
-<div class="thumbnail">
-<p><a href="./posts/shire-map/index.html"> <img src="./posts/shire-map/thumbnail.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/shire-map/index.html">
-<h3 class="no-anchor listing-title">
-Mapping The Shire With <code>ggplot2</code>
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('gis'); return false;">
-gis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('data viz'); return false;">
-data viz
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('terra'); return false;">
-terra
-</div>
-</div>
-<a href="./posts/shire-map/index.html">
-<div class="listing-description">
-My dad is a massive Tolkien fan, and when I stumbled upon this incredible R blog by Andrew Heiss showcasing GIS with the <code>sf</code> package and Middle Earth data, I knew I needed to make him a custom map for his birthday. I’m not as big a fan as him, but I love the LOTR books and movies, and we share a…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/shire-map/index.html">
-<div class="listing-date">
-Nov 4, 2023
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -22,5 +22,14 @@
   },
   "posts/front-garden/index.qmd": {
     "index.html": "6ff30798"
+  },
+  "soccer.qmd": {
+    "soccer.html": "f6e1d09b"
+  },
+  "scientific_research.qmd": {
+    "scientific_research.html": "17d2fccd"
+  },
+  "research.md": {
+    "research.html": "e16c19ff"
   }
 }
