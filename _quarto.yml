@@ -6,10 +6,10 @@ website:
   title: "Blog"
   navbar:
     left:
-      - text: "About Me"
+      - text: "About Ben"
         file: about.qmd
       - text: "CV"
-        file: bellman-cv-2023.pdf
+        file: ben-bellman-resume-2024-01-07.pdf
       - text: "Scientific Research"
         file: scientific_research.qmd
       - text: "Soccer"
@@ -19,8 +19,6 @@ website:
         href: https://www.linkedin.com/in/benjamin-bellman-996936bb
       - icon: github
         href: https://github.com/benbellman
-      - icon: mastodon
-        href: https://mastodon.skrimmage.com/@BenInquiring
 format:
   html:
     theme: lumen

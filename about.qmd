@@ -5,11 +5,30 @@ about:
   image: profile.png
 ---
 
-I'm a data scientist and writer, and I currently work as a Senior Data Analyst in the Boulder County justice system. I have consulted with an MLS club and a legendary MLS player, among others in soccer and science. Through my justice work, I've developed a knack for helping inexperienced data customers get the insights they need. Please [contact me](mailto:bhbellman@yahoo.com) if you'd like to discuss your soccer, social, or spatial data problems.
+I'm a data scientist and writer, and I currently work as a Senior Data Analyst in the Boulder County justice system. I have consulted with an MLS club and a legendary MLS player, among others in soccer and science. Through my justice work, I've developed a knack for helping inexperienced data customers get the insights they need. Please contact me if you'd like to discuss your soccer, social, or spatial data problems.
 
-Beyond my professional passions, I love food, poetry, music, maps, games, laughing, and learning about the world.This blog is a space to hack code, share ideas, and have fun. I've found so many useful things on blogs just like this, so I hope you find something useful here.
+Beyond my professional passions, I love food, poetry, music, maps, games, laughing, and learning about the world. This blog is a space to hack code, share ideas, and have fun. I've found so many useful things on blogs just like this, so I hope you find something useful here.
 
 Data for good, never evil.
+
+::: text-center
+```{=html}
+
+<a class="btn btn-outline-primary btn-lg", href="https://github.com/benbellman" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-github" style='color:#005b96' role='img' aria-label='Github'></i>
+</a>
+
+<a class="btn btn-outline-primary btn-lg", href="https://www.linkedin.com/in/benjamin-bellman-996936bb/" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-linkedin" style='color:#005b96' role='img' aria-label='LinkedIn'></i>
+</a>
+
+<a class="btn btn-outline-primary btn-lg", href="mailto:bhbellman@yahoo.com" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-envelope" style='color:#005b96' role='img' aria-label='email'></i>
+</a>
+```
+:::
+
+{{< pagebreak >}}
 
 ### Education
 

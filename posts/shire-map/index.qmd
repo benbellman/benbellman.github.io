@@ -64,8 +64,7 @@ load_me_data <- function(path) {
 
 ## Vector data
 
-Now we can load the actual data, created by the Middle Earth Digital Elevation Model team (download the vector data [here](https://github.com/jvangeld/ME-GIS) and the elevation model [here](https://github.com/simonbrewer/MiddleEarthR/tree/master/data/raster). Their original goal was to create detailed maps of all of Middle Earth for table top gaming, which posed some intereting challenges for my smaller scale vision. These are the files I ended up using in the final draft:
-
+Now we can load the actual data, created by the Middle Earth Digital Elevation Model team (download the vector data [here](https://github.com/jvangeld/ME-GIS) and the elevation model [here](https://github.com/simonbrewer/MiddleEarthR/tree/master/data/raster). Their original goal was to create detailed maps of all of Middle Earth for table top gaming, which posed some challenges for my smaller scale vision. These are the files I ended up using in the final draft:
 
 ``` r
 # load middle earth vector files
@@ -80,7 +79,6 @@ me_roads <- load_me_data(here("posts", "shire-map", "data", "ME-GIS-master", "Ro
 ## Raster data
 
 Now we load and process the elevation raster data. This next part uses the `terra` package, which I finally started using for this project! After loading, I make sure it has the same coordinate system as the vector files.
-
 
 ``` r
 # load digital elevation model
