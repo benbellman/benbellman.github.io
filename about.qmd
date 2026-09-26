@@ -22,8 +22,8 @@ I currently work as a public sector data engineer, building pipelines and report
     <i class="bi bi-linkedin" style='color:#005b96' role='img' aria-label='LinkedIn'></i>
 </a>
 
-<a class="btn btn-outline-primary btn-lg", href="mailto:bhbellman@yahoo.com" target="_blank" rel="noopener noreferrer">
-    <i class="bi bi-envelope" style='color:#005b96' role='img' aria-label='email'></i>
+<a class="btn btn-outline-primary btn-lg", href="https://bsky.app/profile/beninquiring.bsky.social" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-bluesky" style='color:#005b96' role='img' aria-label='email'></i>
 </a>
 ```
 :::

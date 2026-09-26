@@ -7,9 +7,9 @@ image: thumbnail.png
 
 My dad is a massive Tolkien fan, and when I stumbled upon [this incredible R blog](https://www.andrewheiss.com/blog/2023/04/26/middle-earth-mapping-sf-r-gis/) by Andrew Heiss showcasing GIS with the `sf` package and Middle Earth data, I knew I needed to make him a custom map for his birthday. I'm not as big a fan as him, but I love the LOTR books and movies, and we share a particular fondness for the Shire: him because of Anglophile agrarian idealism, and me for the rich bounty of geographic world-building that Tolkien shoveled into it.
 
-I know a lot of geographers swear by `tmap`, but my favorite viz tool will always be `ggplot2`, even for mapping. The wealth of companion packages that have been built for it is just so powerful. I also love the ability to hard-code label placements within the coordinate space of the data/chart, something I leaned on heavily for this project.
+I know a lot of geographers swear by `tmap`, but my favorite tool for any kind of data viz will always be `ggplot2`, even for mapping. The wealth of companion packages that have been built for it is just so powerful. I also love the ability to hard-code label placements within the coordinate space of the data/chart, something I leaned on heavily for this project.
 
-My objective was to create a classic Tolkien-style map as a standard 2560-by-1440 pixel desktop background. I wanted it to have that iconic Peter Jackson film style and leverage some 3D effects to highlight topography. I also wanted it to have enough detail to take you on a journey in your imagination but still be a usable background, letting your icons appear effortlessly and feel natural. Skip to the end if you want to see the final product and download to use yourself!
+My objective was to create a classic Tolkien-style map as a standard 2560-by-1440 pixel desktop background. I wanted it to have that iconic Peter Jackson film style and leverage some 3D shadow effects to highlight topography. I also wanted it to have enough detail to take you on a journey in your imagination but still be a usable background and minimizing clutter. Skip to the end if you want to see the final product and download to use yourself!
 
 ## Setting up
 
@@ -21,14 +21,15 @@ library(here) #consistent local paths, check it out
 
 # register downloaded Tolkien.tff with extrafont package
 # use your own folder path
+# only need to do this step once!
 font_import(paths = here("posts", "shire-map", "data"))
 
 # import font data into extrafont library within R
+# do this at the start of each new R session
 loadfonts()
-
-# fonts loaded this way are availble for future sessions 
-# just load extrafont with this verison of R
 ```
+
+The final step is to ensure the font data is installed in your operating system's font manager. The OS installation makes the font available in the system, `font_import()` registers the font in the `extrafont` package data, and `loadfonts()` registers the font in the fresh R session's graphics device.
 
 Now that the font is installed, start a fresh R session to use it. Let's load all the necessary packages and set up a couple handy functions for later:
 
@@ -41,6 +42,9 @@ library(ggspatial)
 library(ggpattern)
 library(here)
 library(extrafont)
+
+# register fonts
+loadfonts()
 
 # keep colors consistent
 clr_green <- "#035711"
