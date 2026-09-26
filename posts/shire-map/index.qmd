@@ -1,7 +1,7 @@
 ---
 title: "Mapping The Shire With `ggplot2`"
 date: "2023-11-04"
-categories: [ggplot2, gis, data viz, terra]
+categories: [ggplot2, gis, maps, R]
 image: thumbnail.png
 ---
 

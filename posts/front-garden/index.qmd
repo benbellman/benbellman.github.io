@@ -1,7 +1,7 @@
 ---
 title: "Front Garden"
 date: "2023-11-20"
-categories: [poetry]
+categories: [poems]
 ---
 
 a stillness encased\
@@ -17,8 +17,8 @@ overlook warring forests\
 of dill and mint and chives
 
 thick with buzzing fragrance\
-an idyll unsheared unmoored   
-   
+an idyll unsheared unmoored
+
 picketed by peeling paint\
 asphalt rubber plastic rust
 

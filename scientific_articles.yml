@@ -9,7 +9,28 @@ cc:
   published_url: https://doi.org/10.1177/15356841231188968
   journal: City & Community
   abstract: "A standard interpretation of the intensification of segregation in the early twentieth century is that residents of Northern cities reacted against a growing African American presence, using segregation as a tool of social control that was less needed in the South. Evidence from newly available data for 134 cities in 1900–1940 puts this interpretation in question in several ways. We find that segregation was already high in 1900 at the neighborhood scale. Not only was it rising, but it was changing its spatial scale as clusters of Black settlement in side streets and alleys disappeared from White districts while expanding into large Black zones. Finally, multivariate analyses show that trends were similar in the North and South, and in neither region was Black population size (i.e., “Black threat”) a significant predictor of increasing segregation. The general trends of rising segregation and increasing spatial scale became a nationwide pattern."
-  
+
+diss:
+  title: "Tracking White Flight in Philadelphia Before World War II (Dissertation)"
+  authors:
+    - me
+  year: 2020
+  published_url: https://repository.library.brown.edu/studio/item/bdr:1129230/
+  publisher: Brown Digital Repository
+  abstract: "In the decades after World War II, new suburban housing developments became the ideal destination for white residents of major American cities. At the same time, the Great Migration of black migrants from the South to major industrial cities across the country began to reach a peak. Qualitative housing studies identified the trend of white flight, where white residents quickly moved away from neighborhoods with new black residents due to racist anxiety, leading to homogenous black neighborhoods within large cities. Additionally, causal statistical analysis of cities after World War II (Boustan 2010) and of neighborhoods in Northern cities between 1900 and 1930 (Shertzer and Walsh 2019) have confirmed that in-flows of black migrants induced increased rates of white out-migration. However, no study has been able to identify and analyze the actual moves made by households in urban space to evaluate the white flight hypothesis at the individual level for this historical period. This dissertation addresses this gap in the historical housing and segregation literatures with a novel application of automated record linkage using supervised machine learning. The census records of the same household heads within the city of Philadelphia 1910 and 1940 are linked, showing where households lived and moved to in the decade between censuses. Chapter 1 documents this process and shows how considering the information about other households members improves the accuracy and efficiency of the resulting links. Chapter 2 presents a detailed description of residential behavior in Philadelphia during this historical period, exposing homeownership as a critical factor in shaping racial differences in stability, and mapping how white residents tended to move to growing areas at the edges of the large city. Chapter 3 uses multivariate regression directly analyze white flight, finding that white households were more likely to leave neighborhoods with a larger proportion of black residents. Together, this research provides strong evidence supporting the existence white flight before mass suburbanization, exposes new details about the history of residential change in an important American city, and offers a new analytical paradigm for studying urban populations using historical census data."
+
+paa:
+  title: "Spatial and social contexts of mortality resulting from interactions with police (Poster)"
+  authors:
+    - me
+    - Matthew Martinez
+    - Christopher Graziul
+    - John R. Logan
+  year: 2017
+  published_url: https://repository.library.brown.edu/studio/item/bdr:781113/
+  publisher: Brown Digital Repository
+  abstract: "We explored the spatial distribution of racial and ethnic groups' influence on the use of lethal force by police officers and whether police officers use lethal force more often in local areas with higher racial/ethnic diversity and segregation. Health and Mortality Poster Session Prize Winner at the 2017 Population Association of America Annual Meeting in Chicago, IL."
+
 irsr:
   title: "Local Population Change and Variations in Racial Integration in the United States, 2000–2010"  
   authors:
