@@ -5,11 +5,11 @@ about:
   image: profile.png
 ---
 
-I'm a data scientist and writer, and I currently work as a Senior Data Analyst in the Boulder County justice system. I have consulted with an MLS club and a legendary MLS player, among others in soccer and science. Through my justice work, I've developed a knack for helping inexperienced data customers get the insights they need. Please contact me if you'd like to discuss your soccer, social, or spatial data problems.
+Jack of all trades, master of none.
 
-Beyond my professional passions, I love food, poetry, music, maps, games, laughing, and learning about the world. This blog is a space to hack code, share ideas, and have fun. I've found so many useful things on blogs just like this, so I hope you find something useful here.
+I grew up a math, history, and music nerd, and was one of 3 freshman in a class of 7,000 students that declared a geography major. I ended up double majoring in the creative writing program, and after devouring GIS and spatial statistics, I finally took my first sociology course having already applied to three sociology graduate programs. Good thing I really enjoyed that immigration course my last semester! I spent six years at Brown University training as a social demographer and spatial scientist, completing my PhD in Sociology in 2020. I'm also an avid soccer fan (go Rapids) and analytics pundit (go American Soccer Analysis) with an extensive background in soccer data.
 
-Data for good, never evil.
+I currently work as a public sector data engineer, building pipelines and reports that drive transparency and service delivery for a county of 325k people. I am also a union member and steward, and advocate for equity and justice in my workplace. If you'd like to connect with me on any of these topics, please DM on Bluesky and LinkedIn!
 
 ::: text-center
 ```{=html}
@@ -32,7 +32,7 @@ Data for good, never evil.
 
 ### Education
 
-::: {.d-flex .justify-content-between}
+::::: {.d-flex .justify-content-between}
 <div>
 
 **Brown University**\
@@ -45,11 +45,11 @@ Advisor: John R. Logan
 Providence, RI\
 Granted 2020
 :::
-:::
+:::::
 
 Dissertation: [*Tracking White Flight in Philadelphia Before World War II*](https://repository.library.brown.edu/studio/item/bdr:1129230/)
 
-::: {.d-flex .justify-content-between}
+::::: {.d-flex .justify-content-between}
 <div>
 
 **Brown University**\
@@ -61,9 +61,9 @@ M.A. in Sociology\
 Providence, RI\
 Granted 2016
 :::
-:::
+:::::
 
-::: {.d-flex .justify-content-between}
+::::: {.d-flex .justify-content-between}
 <div>
 
 **University of Colorado**\
@@ -75,4 +75,4 @@ B.A. in Geography and English
 Boulder, CO\
 Granted 2014
 :::
-:::
+:::::

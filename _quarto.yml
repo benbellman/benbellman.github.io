@@ -6,13 +6,11 @@ project:
     - "posts/**/*.qmd"
 
 website:
-  title: "Blog"
+  title: "bellman's desk 🛎"
   navbar:
     left:
       - text: "About Ben"
         file: about.qmd
-      - text: "CV"
-        file: ben-bellman-resume-2024-01-07.pdf
       - text: "Scientific Research"
         file: scientific_research.qmd
       - text: "Soccer"
@@ -22,6 +20,8 @@ website:
         href: https://www.linkedin.com/in/benjamin-bellman-996936bb
       - icon: github
         href: https://github.com/benbellman
+      - icon: bluesky
+        href: https://bsky.app/profile/beninquiring.bsky.social
 format:
   html:
     theme: lumen

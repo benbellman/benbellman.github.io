@@ -6,7 +6,7 @@ section-divs: false
 keep-md: true
 ---
 
-I've loved soccer my whole life, and once I found data as my professional focus, that quickly became a fundamental way I think about the game. I have worked with everything from simple box scores to space-in-time player tracking data, and I hope to keep pushing the envelope in this space. I'm a contributor with [American Soccer Analysis](https://www.americansocceranalysis.com/) (my bylines are below), and if you work in the game I'd love to connect over social media or [email](mailto:bhbellman@yahoo.com)!
+I played soccer my entire childhood, and once I was in college, my data and soccer brains started to merge. That put me on the path towards being an early acolyte of [American Soccer Analysis](https://www.americansocceranalysis.com/), where I now co-host the flagship Major League Soccer podcast, write MLS season previews, and succumb to my friends' obsessions with [throw-ins](https://www.americansocceranalysis.com/home/2026/4/15/throw-in-it-back). I also have some professional experience in the MLS ecosystem. I spent a year part-time with the Colorado Rapids supporting their analytics department, one of the most well-regarded in the league. I've also provided data consulting for a legendary MLS player during contract negotiations, who then secured an extension with their club.
 
 ```{python}
 import yaml

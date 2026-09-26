@@ -1,26 +1,25 @@
-preview23:
-  title: "2023 Season Previews: New York Red Bulls, Columbus Crew, Colorado Rapids"
+allthrows:
+  title: "Throw-in it Back: Towards a manual for the most common restart"
   authors:
-    - Alex Xenopoulos
-    - Eliot McKinley
     - me
-  year: 2023
-  date: 2023-02-23
-  longdate: "February 23, 2023"
-  published_url: https://www.americansocceranalysis.com/home/2023/2/23/2023-season-previews-new-york-red-bulls-columbus-crew-colorado-rapids
-  description: ""
+  year: 2026
+  date: 2026-04-15
+  longdate: "April 15, 2026"
+  published_url: https://www.americansocceranalysis.com/home/2026/4/15/throw-in-it-back
+  description: "I thought it was time to replicate and extend [Eliot's] findings with all the amazing infrastructure that ASA has built since the days of CSV files on Dropbox. In addition to models estimating throw completions and retained possession, I also analyze the goals added for possessions following throws to assess the value of throw choices. This allows me to find the MLS throw-in MVPs and offer an expanded set of (very general) rules for approaching these overlooked moments of play."
   publisher: American Soccer Analysis
 
-preview19:
-  title: "Colorado Rapids 2019 Season Preview"
+longthrows:
+  title: "How (some) MLS teams are using long throw-ins to play smarter soccer"
   authors:
     - me
-  year: 2019
-  date: 2019-02-12
-  longdate: "February 12, 2019"
-  published_url: https://www.americansocceranalysis.com/home/2019/2/12/colorado-rapids-2019-season-preview
-  description: ""
-  publisher: American Soccer Analysis
+    - Joseph Lowery
+  year: 2025
+  date: 2025-05-28
+  longdate: "May 28, 2025"
+  published_url: https://www.backheeled.com/how-some-mls-teams-are-using-long-throw-ins-to-play-smarter-soccer/
+  description: "MLS teams are throwing the ball further than they were a decade ago. Here’s why, and which teams and players are setting the trend."
+  publisher: Backheeled
   
 transfers:
   title: "How to Find Transfer Market Success in MLS"
@@ -30,39 +29,6 @@ transfers:
   date: 2019-01-25
   longdate: "January 25, 2019"
   published_url: https://www.americansocceranalysis.com/home/2019/1/24/uncovering-the-best-foreign-transfers-to-mls
-  description: ""
-  publisher: American Soccer Analysis
-  
-preview18ny:
-  title: "New York Red Bulls 2018 Season Preview"
-  authors:
-    - me
-  year: 2018
-  date: 2018-02-21
-  longdate: "February 21, 2018"
-  published_url: https://www.americansocceranalysis.com/home/2018/2/21/new-york-red-bulls-2018-season-preview
-  description: ""
-  publisher: American Soccer Analysis
-  
-preview18co:
-  title: "Colorado Rapids 2018 Season Preview"
-  authors:
-    - me
-  year: 2018
-  date: 2018-02-15
-  longdate: "February 15, 2018"
-  published_url: https://www.americansocceranalysis.com/home/2018/2/15/colorado-rapids-2018-season-preview
-  description: ""
-  publisher: American Soccer Analysis
-  
-preview17:
-  title: "Colorado Rapids 2017 Season Preview"
-  authors:
-    - me
-  year: 2017
-  date: 2017-02-15
-  longdate: "February 28, 2017"
-  published_url: https://www.americansocceranalysis.com/home/2017/2/28/colorado-rapids-2017-season-preview
   description: ""
   publisher: American Soccer Analysis
   

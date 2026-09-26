@@ -1,5 +1,5 @@
 ---
-title: "bellman's desk 🛎️"
+title: "Posts and poems️"
 listing:
   contents: posts
   sort: "date desc"
