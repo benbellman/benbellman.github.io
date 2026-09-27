@@ -5,9 +5,7 @@ about:
   image: profile.png
 ---
 
-Jack of all trades, master of none.
-
-I grew up a math, history, and music nerd, and was one of 3 freshman in a class of 7,000 students that declared a geography major. I ended up double majoring in the creative writing program, and after devouring GIS and spatial statistics, I finally took my first sociology course having already applied to three sociology graduate programs. Good thing I really enjoyed that immigration course my last semester! I spent six years at Brown University training as a social demographer and spatial scientist, completing my PhD in Sociology in 2020. I'm also an avid soccer fan (go Rapids) and analytics pundit (go American Soccer Analysis) with an extensive background in soccer data.
+I am a jack-of-all-trades data expert in analysis, visualization, engineering, and methods for quantitative and qualitative research. My graduate training was focused on statistics, demographic methods, GIS and spatial science, migration, and urban studies. Along the way, I've learned and applied skills in machine learning (notably in my dissertation) and deploying LLMs for software development. I also have passions for music, poetry, history, food, and especially [soccer](https://benbellman.github.io/soccer.html).
 
 I currently work as a public sector data engineer, building pipelines and reports that drive transparency and service delivery for a county of 325k people. I am also a union member and steward, and advocate for equity and justice in my workplace. If you'd like to connect with me on any of these topics, please DM on Bluesky and LinkedIn!
 

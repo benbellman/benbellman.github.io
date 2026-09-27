@@ -6,7 +6,7 @@ section-divs: false
 keep-md: true
 ---
 
-I played soccer my entire childhood, and once I was in college, my data and soccer brains started to merge. That put me on the path towards being an early acolyte of [American Soccer Analysis](https://www.americansocceranalysis.com/), where I now co-host the flagship Major League Soccer podcast, write MLS season previews, and succumb to my friends' obsessions with [throw-ins](https://www.americansocceranalysis.com/home/2026/4/15/throw-in-it-back). I also have some professional experience in the MLS ecosystem. I spent a year part-time working with the Colorado Rapids' analytics department, one of the most respected in the league. I've also provided data consulting for a legendary MLS player during contract negotiations, who then secured a new deal with their club.
+I played soccer my entire childhood, and once I was in college, my data and soccer brains started to merge. That led me to becoming an early acolyte of [American Soccer Analysis](https://www.americansocceranalysis.com/), where I now co-host the flagship Major League Soccer podcast, write MLS season previews, and succumb to my friends' obsessions with [throw-ins](https://www.americansocceranalysis.com/home/2026/4/15/throw-in-it-back). I also have professional experience in the MLS ecosystem. I spent a year working part-time with the Colorado Rapids' analytics department, one of the most respected in the league. I've also consulted for a legendary MLS player during contract negotiations, who then secured a new deal with their long-time club.
 
 ```{python}
 import yaml
